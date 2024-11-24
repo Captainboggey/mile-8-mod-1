@@ -1,6 +1,11 @@
+import { useState } from "react";
+import Link from "../Link/Link";
+import { IoMenu } from "react-icons/io5";
+import { IoCloseCircle } from "react-icons/io5";
 
 
 const Navbar = () => {
+    const [open,setOpen]= useState(false)
     const routes = [
         { id: 1, path: "/", name: "Home" },
         { id: 2, path: "/about", name: "About" },
@@ -9,10 +14,19 @@ const Navbar = () => {
         { id: 5, path: "/profile/:id", name: "Profile" },
       ];
     return (
-        <nav>
-           <ul className="md:flex justify-center ">
+        <nav className="text-black p-6 bg-yellow-200">
+            <div className="md:hidden text-2xl" onClick={()=> setOpen(!open)}>
+                {
+                    open === true 
+                    ?
+                    <IoCloseCircle></IoCloseCircle>:
+                    <IoMenu className=""></IoMenu>
+                }
+            
+            </div>
+           <ul className={`md:flex duration-1000 absolute md:static rounded-lg py-2 bg-yellow-200 px-6  ${open?'top-16':'-top-60'}`}>
            {
-                routes.map(route=><li className="mr-6" key={route.id}><a href={route.path}>{route.name}</a></li>)
+                routes.map(route=> <Link key={route.id} route={route}></Link>)
             }
            </ul>
             
