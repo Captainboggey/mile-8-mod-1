@@ -2,7 +2,7 @@ import PropTypes from "prop-types";
 import Feature from "../Feature/Feature";
 
 const PriceOption = ({option}) => {
-    console.log(option)
+    // console.log(option)
     const {name,price,features} =option;
     return (
         <div className="bg-blue-300 rounded-md p-4 flex flex-col text-black">
